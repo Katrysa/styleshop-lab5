@@ -1,0 +1,14 @@
+{
+  "name": "styleshop",
+  "version": "1.0.0",
+  "description": "STYLESHOP — навчальний вебзастосунок інтернет-магазину: клієнт, REST API на Node.js і база даних SQLite",
+  "private": true,
+  "license": "UNLICENSED",
+  "main": "server/index.js",
+  "engines": { "node": ">=22.13.0" },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test"
+  }
+}

@@ -1,0 +1,46 @@
+/* responsive.css — адаптивність: планшет ≤ 1024px, мобільний ≤ 768px і ≤ 480px */
+@media (max-width: 1024px) {
+  .category-grid { grid-template-columns: repeat(2, 1fr); }
+  .catalog-layout { grid-template-columns: 220px 1fr; gap: var(--space-3); }
+  .cart-layout, .contacts-layout { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .gallery { grid-template-columns: 1fr; }
+  .gallery-thumbs { flex-direction: row; order: 2; }
+  .gallery-thumbs .thumb { width: 5rem; }
+}
+@media (max-width: 900px) {
+  .header-inner { flex-wrap: wrap; gap: var(--space-2); }
+  .header-actions { order: 2; }
+  .nav-toggle { display: grid; place-items: center; margin-left: auto; order: 3; }
+  .nav-toggle-icon, .nav-toggle-icon::before, .nav-toggle-icon::after { display: block; width: 1.5rem; height: 2px; background: var(--text); content: ""; }
+  .nav-toggle-icon { position: relative; }
+  .nav-toggle-icon::before { position: absolute; top: -7px; }
+  .nav-toggle-icon::after { position: absolute; top: 7px; }
+  .main-nav { display: none; flex-basis: 100%; order: 4; padding-bottom: var(--space-2); }
+  .main-nav.is-open, .no-js .main-nav { display: block; }
+  .no-js .nav-toggle { display: none; }
+  .main-nav ul { flex-direction: column; gap: var(--space-1); }
+}
+@media (max-width: 768px) {
+  .section { padding-block: var(--space-4); }
+  .hero, .two-col, .subscribe, .product-layout { grid-template-columns: 1fr; }
+  .hero { gap: var(--space-3); }
+  .catalog-layout { grid-template-columns: 1fr; }
+  .section-head { flex-direction: column; align-items: flex-start; }
+  /* таблиця кошика перетворюється на список карток */
+  .cart-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .cart-table, .cart-table tbody, .cart-table tr, .cart-table td { display: block; }
+  .cart-table tr { display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem var(--space-2); padding: var(--space-2) 0; border-bottom: 1px solid var(--line); }
+  .cart-table td { padding: 0; border: 0; }
+  .cart-table td:first-child { grid-column: 1 / -1; }
+  .cart-table td[data-label]::before { content: attr(data-label) ": "; color: var(--muted); font-size: 0.85rem; }
+}
+@media (max-width: 480px) {
+  .category-grid { grid-template-columns: 1fr 1fr; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-2); }
+  .footer-grid, .form-grid { grid-template-columns: 1fr; }
+  .logo { font-size: 1.4rem; }
+  .hero-actions .btn { flex: 1 1 100%; }
+  .inline-form { flex-direction: column; }
+  .info-bar { font-size: 0.8rem; }
+}

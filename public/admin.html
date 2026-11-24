@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="uk" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Адміністрування — STYLESHOP</title>
+  <meta name="description" content="Панель адміністратора STYLESHOP: товари, замовлення, повідомлення.">
+  <meta name="robots" content="noindex, nofollow">
+  <script src="js/boot.js"></script>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти до основного змісту</a>
+<p class="info-bar">Безкоштовна доставка від 2 000 ₴ · Повернення протягом 14 днів</p>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">STYLESHOP</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><span class="nav-toggle-icon" aria-hidden="true"></span><span class="visually-hidden">Меню</span></button>
+    <nav class="main-nav" id="main-nav" aria-label="Основна навігація"><ul><li><a href="index.html">Головна</a></li><li><a href="catalog.html">Каталог</a></li><li><a href="cart.html">Кошик</a></li><li><a href="contacts.html">Контакти</a></li></ul></nav>
+    <div class="header-actions">
+      <a href="catalog.html#search" aria-label="Пошук"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></a>
+      <a href="catalog.html?fav=1" aria-label="Обране"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.7 7.7 4 4.5 7.2 4.5c2 0 3.7 1.1 4.8 2.8 1.1-1.7 2.8-2.8 4.8-2.8 3.2 0 5.5 3.2 4.4 6.6-1.7 4.8-9.2 9.4-9.2 9.4z"/></svg></a>
+      <a href="contacts.html" aria-label="Контакти"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 15-5 16 0"/></svg></a>
+      <a class="js-cart-link" href="cart.html" aria-label="Кошик"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg><span class="cart-count" hidden>0</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<div class="container section">
+  <h1>Адміністрування</h1>
+  <section class="card-box" id="login" aria-labelledby="login-title" style="max-width:30rem">
+    <h2 id="login-title" style="font-size:1.6rem">Вхід</h2>
+    <form id="login-form" action="#" method="post">
+      <label for="token">Токен адміністратора</label>
+      <input type="password" id="token" name="token" autocomplete="off" required>
+      <button class="btn" style="margin-top:var(--space-2)" type="submit">Увійти</button>
+    </form>
+    <p class="field-error" id="login-error" role="alert" hidden></p>
+  </section>
+
+  <div id="panel" hidden>
+    <div class="admin-bar">
+      <div class="tabs" role="tablist" aria-label="Розділи панелі">
+        <button type="button" role="tab" data-tab="products" aria-selected="true">Товари</button>
+        <button type="button" role="tab" data-tab="orders" aria-selected="false">Замовлення</button>
+        <button type="button" role="tab" data-tab="messages" aria-selected="false">Повідомлення</button>
+      </div>
+      <button class="btn btn--outline" type="button" id="logout">Вийти</button>
+    </div>
+
+    <section id="tab-products" role="tabpanel" aria-labelledby="h-products">
+      <div class="section-head"><h2 id="h-products">Товари</h2><button class="btn" type="button" id="new-product">Додати товар</button></div>
+      <div class="table-wrap"><table class="admin-table">
+        <caption class="visually-hidden">Список товарів</caption>
+        <thead><tr><th scope="col">ID</th><th scope="col">Назва</th><th scope="col">Категорія</th><th scope="col">Ціна</th><th scope="col">Дії</th></tr></thead>
+        <tbody id="products-body"></tbody></table></div>
+      <form class="admin-form card-box" id="product-form" action="#" method="post" novalidate hidden>
+        <h3 id="pf-title">Новий товар</h3>
+        <ul class="error-list" id="pf-errors" role="alert" hidden></ul>
+        <div class="form-grid">
+          <div><label for="pf-id">Ідентифікатор (латиницею)</label><input type="text" id="pf-id" maxlength="40"></div>
+          <div><label for="pf-name">Назва</label><input type="text" id="pf-name" maxlength="80"></div>
+          <div><label for="pf-category">Категорія</label><input type="text" id="pf-category" maxlength="30"></div>
+          <div><label for="pf-price">Ціна, ₴</label><input type="number" id="pf-price" min="1" step="1"></div>
+          <div><label for="pf-badge">Позначка (необов’язково)</label><input type="text" id="pf-badge" maxlength="20"></div>
+          <div><label for="pf-shape">Форма зображення</label><select id="pf-shape"><option value="tshirt">Футболка</option><option value="shirt">Сорочка</option><option value="pants">Штани</option><option value="jeans">Джинси</option><option value="dress">Сукня</option><option value="jacket">Куртка</option><option value="sweater">Светр</option><option value="bag">Сумка</option></select></div>
+          <div class="full"><label for="pf-description">Короткий опис</label><textarea id="pf-description" maxlength="300" style="min-height:5rem"></textarea></div>
+          <div class="full"><label for="pf-info">Деталі (склад, догляд)</label><textarea id="pf-info" maxlength="600" style="min-height:5rem"></textarea></div>
+        </div>
+        <fieldset><legend>Кольори (від 1 до 3)</legend><div id="pf-colors"></div></fieldset>
+        <fieldset><legend>Розміри</legend><div class="pill-list" id="pf-sizes"></div></fieldset>
+        <button class="btn" type="submit">Зберегти</button>
+        <button class="btn btn--outline" type="button" id="pf-cancel">Скасувати</button>
+      </form>
+    </section>
+
+    <section id="tab-orders" role="tabpanel" aria-labelledby="h-orders" hidden>
+      <h2 id="h-orders">Замовлення</h2>
+      <p class="muted" id="orders-empty" hidden>Замовлень поки немає.</p>
+      <div class="table-wrap"><table class="admin-table">
+        <caption class="visually-hidden">Список замовлень</caption>
+        <thead><tr><th scope="col">№</th><th scope="col">Клієнт</th><th scope="col">Товари</th><th scope="col">Сума</th><th scope="col">Статус</th><th scope="col">Дії</th></tr></thead>
+        <tbody id="orders-body"></tbody></table></div>
+    </section>
+
+    <section id="tab-messages" role="tabpanel" aria-labelledby="h-messages" hidden>
+      <h2 id="h-messages">Повідомлення</h2>
+      <p class="muted" id="messages-empty" hidden>Повідомлень поки немає.</p>
+      <ul class="admin-list" id="messages-body"></ul>
+      <h2 style="margin-top:var(--space-4)">Підписники: <span id="subs-count">0</span></h2>
+      <ul id="subs-body" style="list-style:none"></ul>
+    </section>
+  </div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <section aria-labelledby="f1"><h3 id="f1">STYLESHOP</h3><p class="muted">Інтернет-магазин повсякденного одягу з мінімалістичним оформленням.</p></section>
+      <nav aria-label="Навігація підвалу"><h3>Магазин</h3><ul><li><a href="catalog.html">Каталог</a></li><li><a href="cart.html">Кошик</a></li><li><a href="contacts.html">Контакти</a></li></ul></nav>
+      <section aria-labelledby="f3"><h3 id="f3">Допомога</h3><ul><li><a href="contacts.html#delivery">Доставка й оплата</a></li><li><a href="contacts.html#delivery">Повернення</a></li><li><a href="admin.html">Адміністрування</a></li></ul></section>
+      <section aria-labelledby="f4"><h3 id="f4">Контакти</h3><address><ul><li><a href="tel:+380441234567">+38 (044) 123-45-67</a></li><li><a href="mailto:hello@styleshop.example">hello@styleshop.example</a></li><li class="muted">Київ, вул. Хрещатик, 10</li></ul></address></section>
+    </div>
+    <p class="footer-bottom muted">© 2026 STYLESHOP. Навчальний проєкт, Лабораторна робота № 5.</p>
+  </div>
+</footer>
+<script src="js/api.js" defer></script>
+<script src="js/data.js" defer></script>
+<script src="js/store.js" defer></script>
+<script src="js/ui.js" defer></script>
+<script src="js/admin.js" defer></script>
+</body>
+</html>

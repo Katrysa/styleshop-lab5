@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uk" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Головна — STYLESHOP</title>
+  <meta name="description" content="STYLESHOP — інтернет-магазин повсякденного одягу: каталог, новинки, доставка по Україні.">
+  
+  <script src="js/boot.js"></script>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  
+</head>
+<body data-catalog>
+<a class="skip-link" href="#main">Перейти до основного змісту</a>
+<p class="info-bar">Безкоштовна доставка від 2 000 ₴ · Повернення протягом 14 днів</p>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="index.html">STYLESHOP</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><span class="nav-toggle-icon" aria-hidden="true"></span><span class="visually-hidden">Меню</span></button>
+    <nav class="main-nav" id="main-nav" aria-label="Основна навігація"><ul><li><a href="index.html" aria-current="page">Головна</a></li><li><a href="catalog.html">Каталог</a></li><li><a href="cart.html">Кошик</a></li><li><a href="contacts.html">Контакти</a></li></ul></nav>
+    <div class="header-actions">
+      <a href="catalog.html#search" aria-label="Пошук"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></a>
+      <a href="catalog.html?fav=1" aria-label="Обране"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.2-9.4C1.7 7.7 4 4.5 7.2 4.5c2 0 3.7 1.1 4.8 2.8 1.1-1.7 2.8-2.8 4.8-2.8 3.2 0 5.5 3.2 4.4 6.6-1.7 4.8-9.2 9.4-9.2 9.4z"/></svg></a>
+      <a href="contacts.html" aria-label="Контакти"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 15-5 16 0"/></svg></a>
+      <a class="js-cart-link" href="cart.html" aria-label="Кошик"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg><span class="cart-count" hidden>0</span></a>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<section class="container hero" aria-labelledby="hero-title">
+  <div>
+    <p class="eyebrow">Колекція осінь — зима 2026</p>
+    <h1 id="hero-title">Одяг, який обираєш щодня</h1>
+    <p>Теплі нейтральні відтінки, якісні тканини та проста навігація: знайдіть свою річ за хвилину й оформте замовлення без зайвих кроків.</p>
+    <div class="hero-actions">
+      <a class="btn" href="catalog.html">Дивитися колекцію</a>
+      <a class="btn btn--outline" href="contacts.html#delivery">Доставка й оплата</a>
+    </div>
+  </div>
+  <figure style="margin:0"><img src="img/hero.svg" alt="Куртка-бомбер теракотового кольору з нової колекції" width="400" height="500"></figure>
+</section>
+
+<div class="container"><div class="load-error" id="home-error" role="alert" hidden></div></div>
+
+<section class="section container" aria-labelledby="cat-title">
+  <div class="section-head"><h2 id="cat-title">Категорії</h2><a class="link-arrow" href="catalog.html">Увесь каталог</a></div>
+  <ul class="category-grid" id="category-list"></ul>
+</section>
+
+<section class="section container" aria-labelledby="new-title">
+  <div class="section-head"><h2 id="new-title">Новинки та хіти</h2><a class="link-arrow" href="catalog.html">Дивитися всі</a></div>
+  <ul class="product-grid" id="featured-list"></ul>
+</section>
+
+<section class="section section--surface" aria-labelledby="story-title">
+  <div class="container two-col">
+    <figure style="margin:0"><img src="img/story.svg" alt="В’язаний светр оливкового кольору" width="400" height="500"></figure>
+    <div>
+      <p class="eyebrow">Про бренд</p>
+      <h2 id="story-title">Мінімалізм без компромісів</h2>
+      <p>STYLESHOP створює базовий одяг, який легко поєднувати між собою. Ми обираємо натуральні тканини, спокійні кольори та прості силуети, щоб речі служили довго й не виходили з моди.</p>
+      <p>Кожна модель має детальний опис і чесні фотографії, тож вибір онлайн стає зрозумілим.</p>
+      <a class="btn btn--outline" href="contacts.html">Зв’язатися з нами</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section--accent" aria-labelledby="sub-title">
+  <div class="container subscribe">
+    <div><h2 id="sub-title">Підпишіться на новини</h2><p>Раз на тиждень — нові колекції та персональні пропозиції. Без спаму.</p></div>
+    <div>
+    <form id="subscribe-form" action="#" method="post" data-validate novalidate>
+      <label for="sub-email">Електронна пошта</label>
+      <div class="inline-form">
+        <input type="email" id="sub-email" name="email" placeholder="name@example.com" autocomplete="email" required>
+        <button class="btn" type="submit">Підписатися</button>
+      </div>
+    </form>
+    <p class="form-status" id="sub-status" role="status" hidden></p>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <section aria-labelledby="f1"><h3 id="f1">STYLESHOP</h3><p class="muted">Інтернет-магазин повсякденного одягу з мінімалістичним оформленням.</p></section>
+      <nav aria-label="Навігація підвалу"><h3>Магазин</h3><ul><li><a href="catalog.html">Каталог</a></li><li><a href="cart.html">Кошик</a></li><li><a href="contacts.html">Контакти</a></li></ul></nav>
+      <section aria-labelledby="f3"><h3 id="f3">Допомога</h3><ul><li><a href="contacts.html#delivery">Доставка й оплата</a></li><li><a href="contacts.html#delivery">Повернення</a></li><li><a href="admin.html">Адміністрування</a></li></ul></section>
+      <section aria-labelledby="f4"><h3 id="f4">Контакти</h3><address><ul><li><a href="tel:+380441234567">+38 (044) 123-45-67</a></li><li><a href="mailto:hello@styleshop.example">hello@styleshop.example</a></li><li class="muted">Київ, вул. Хрещатик, 10</li></ul></address></section>
+    </div>
+    <p class="footer-bottom muted">© 2026 STYLESHOP. Навчальний проєкт, Лабораторна робота № 5.</p>
+  </div>
+</footer>
+<script src="js/api.js" defer></script>
+<script src="js/data.js" defer></script>
+<script src="js/store.js" defer></script>
+<script src="js/ui.js" defer></script>
+<script src="js/forms.js" defer></script>
+<script src="js/home.js" defer></script>
+</body>
+</html>

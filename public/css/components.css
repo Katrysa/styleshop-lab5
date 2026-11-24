@@ -1,0 +1,117 @@
+/* components.css — повторювані компоненти дизайн-системи */
+.nav-toggle { display: none; }
+.main-nav a, .header-actions a { text-decoration: none; padding: 0.25rem 0; border-bottom: 2px solid transparent; }
+.main-nav a:hover, .main-nav a[aria-current="page"], .header-actions a:hover { border-bottom-color: var(--text); }
+.header-actions svg { width: 1.4rem; height: 1.4rem; fill: none; stroke: currentColor; stroke-width: 1.6; }
+.cart-count { display: inline-flex; align-items: center; justify-content: center; min-width: 1.3rem; height: 1.3rem; margin-left: 0.2rem; border-radius: 50%; background: var(--text); color: var(--bg); font-size: 0.75rem; }
+
+/* Кнопки: основна, контурна, текстове посилання */
+.btn { display: inline-block; padding: 0.8rem 1.6rem; border: 1.5px solid var(--text); border-radius: var(--radius); background: var(--text); color: var(--bg); font: inherit; font-weight: 500; text-align: center; text-decoration: none; cursor: pointer; transition: background 0.2s, color 0.2s; }
+.btn:hover { background: transparent; color: var(--text); }
+.btn--outline { background: transparent; color: var(--text); }
+.btn--outline:hover { background: var(--text); color: var(--bg); }
+.btn--block { display: block; width: 100%; }
+.link-arrow { font-weight: 500; text-underline-offset: 4px; }
+
+/* Картка категорії та картка товару */
+.category-card { display: block; padding: var(--space-3) var(--space-2); background: var(--surface); border-radius: var(--radius); text-align: center; text-decoration: none; font-family: var(--font-serif); font-size: 1.4rem; font-weight: 600; transition: background 0.2s; }
+.category-card:hover { background: var(--accent); }
+.product-card { position: relative; display: flex; flex-direction: column; height: 100%; }
+.product-card figure { margin: 0 0 var(--space-1); overflow: hidden; border-radius: var(--radius); background: var(--surface); }
+.product-card img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform 0.4s; }
+.product-card:hover img { transform: scale(1.04); }
+.product-card h3 { margin: 0; font-family: var(--font-sans); font-size: 1rem; font-weight: 500; }
+.product-card h3 a { text-decoration: none; }
+.product-card h3 a::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
+.product-card .meta { margin: 0; font-size: 0.875rem; color: var(--muted); }
+.price { margin: 0.25rem 0 0; font-weight: 700; }
+.badge { position: absolute; top: 0.6rem; left: 0.6rem; z-index: 2; padding: 0.15rem 0.6rem; border-radius: 2px; background: var(--accent); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+.fav { position: absolute; top: 0.5rem; right: 0.5rem; z-index: 3; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; padding: 0; border: 0; border-radius: 50%; background: var(--white); color: var(--text); cursor: pointer; }
+.fav svg { width: 1.2rem; height: 1.2rem; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.fav[aria-pressed="true"] svg { fill: currentColor; }
+
+/* Форми */
+fieldset { margin: 0 0 var(--space-3); padding: 0; border: 0; }
+legend { margin-bottom: var(--space-1); padding: 0; font-weight: 700; }
+label { display: block; margin-bottom: 0.3rem; font-size: 0.9rem; font-weight: 500; }
+input[type="text"], input[type="email"], input[type="tel"], input[type="search"], input[type="number"], select, textarea {
+  width: 100%; padding: 0.7rem 0.9rem; border: 1.5px solid var(--line); border-radius: var(--radius); background: var(--white); color: var(--text); font: inherit;
+}
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--text); outline-offset: 1px; border-color: var(--text); }
+textarea { min-height: 8rem; resize: vertical; }
+.filters { padding: var(--space-3); background: var(--surface); border-radius: var(--radius); }
+.check { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.4rem; font-weight: 400; cursor: pointer; }
+.check input { width: 1.1rem; height: 1.1rem; accent-color: var(--text); }
+.price-range { display: flex; align-items: center; gap: var(--space-1); }
+.inline-form { display: flex; gap: var(--space-1); }
+.inline-form input { flex: 1; min-width: 0; }
+
+/* Вибір розміру та кольору */
+.pill-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.pill { display: grid; place-items: center; min-width: 3rem; height: 3rem; margin: 0; padding: 0 0.8rem; border: 1.5px solid var(--text); border-radius: var(--radius); cursor: pointer; }
+input:checked + .pill { background: var(--text); color: var(--bg); }
+input:focus-visible + .pill { outline: 3px solid var(--text); outline-offset: 3px; }
+input:disabled + .pill { opacity: 0.4; text-decoration: line-through; cursor: not-allowed; }
+.swatch { display: block; width: 1.6rem; height: 1.6rem; border-radius: 50%; border: 1px solid var(--text); }
+
+/* Хлібні крихти, акордеон, таблиця, блоки */
+.breadcrumbs { padding-block: var(--space-2); font-size: 0.875rem; color: var(--muted); }
+.breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; }
+.breadcrumbs li + li::before { content: "/"; margin-right: 0.5rem; }
+details { border-bottom: 1px solid var(--line); padding: var(--space-2) 0; }
+summary { cursor: pointer; font-weight: 700; }
+details p { margin: var(--space-1) 0 0; color: var(--muted); }
+.cart-table { width: 100%; border-collapse: collapse; }
+.cart-table th { padding: 0.6rem; border-bottom: 2px solid var(--text); font-size: 0.85rem; text-align: left; text-transform: uppercase; letter-spacing: 0.06em; }
+.cart-table td { padding: var(--space-2) 0.6rem; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.cart-item { display: flex; align-items: center; gap: var(--space-2); }
+.cart-item img { width: 5rem; border-radius: var(--radius); background: var(--surface); }
+.cart-table input[type="number"] { width: 4.5rem; }
+.link-btn { padding: 0; border: 0; background: none; color: var(--muted); font: inherit; text-decoration: underline; cursor: pointer; }
+.summary { padding: var(--space-3); background: var(--surface); border-radius: var(--radius); }
+.summary dl { display: grid; grid-template-columns: 1fr auto; gap: 0.5rem; margin: 0 0 var(--space-2); }
+.summary dd { margin: 0; text-align: right; }
+.summary .total { padding-top: 0.5rem; border-top: 1px solid var(--text); font-size: 1.2rem; font-weight: 700; }
+.card-box { padding: var(--space-3); background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); }
+.option-card { display: flex; align-items: flex-start; gap: 0.7rem; padding: var(--space-2); margin-bottom: 0.6rem; border: 1.5px solid var(--line); border-radius: var(--radius); background: var(--white); cursor: pointer; font-weight: 400; }
+.option-card input { margin-top: 0.3rem; accent-color: var(--text); }
+.info-list { display: grid; gap: var(--space-2); margin: 0; }
+.info-list dt { font-weight: 700; }
+.info-list dd { margin: 0; color: var(--muted); }
+.site-footer a { text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+.site-footer ul { list-style: none; display: grid; gap: 0.4rem; }
+.site-footer h3 { font-family: var(--font-sans); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.site-footer .muted { color: #CFC5B8; }
+
+.hero img, .two-col img, .gallery > figure img { width: 100%; }
+address { font-style: normal; }
+
+/* ---- Лабораторна № 4: стилі інтерактивних компонентів ---- */
+.site-header.is-scrolled { box-shadow: 0 2px 12px rgba(41, 36, 31, 0.12); }
+.nav-toggle { padding: 0.7rem; border: 0; background: none; cursor: pointer; }
+.field-error { margin: 0.35rem 0 0; color: #B3261E; font-size: 0.875rem; font-weight: 500; }
+.field-error::before { content: "⚠ "; }
+input[aria-invalid="true"], textarea[aria-invalid="true"], select[aria-invalid="true"] { border-color: #B3261E; background: #FFF6F4; }
+.form-status { margin: var(--space-2) 0 0; padding: var(--space-2); border-left: 4px solid var(--text); background: var(--white); font-weight: 500; }
+.toast-box { position: fixed; left: 50%; bottom: var(--space-3); z-index: 200; display: grid; gap: 0.5rem; width: min(92vw, 26rem); transform: translateX(-50%); }
+.toast { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1rem; padding: 0.9rem 1.2rem; border-radius: var(--radius); background: var(--text); color: var(--bg); box-shadow: 0 6px 20px rgba(41, 36, 31, 0.3); }
+.toast a { color: var(--accent); font-weight: 700; }
+.qty { display: inline-flex; align-items: center; gap: 0.3rem; }
+.qty-btn { width: 2.2rem; height: 2.4rem; border: 1.5px solid var(--text); border-radius: var(--radius); background: transparent; color: var(--text); font: inherit; font-size: 1.1rem; cursor: pointer; }
+.qty-btn:hover { background: var(--text); color: var(--bg); }
+.qty input { width: 3.6rem; text-align: center; }
+.thumb { padding: 0; border: 2px solid transparent; border-radius: var(--radius); background: none; cursor: pointer; }
+.thumb[aria-pressed="true"] { border-color: var(--text); }
+.thumb img { width: 100%; border-radius: 2px; }
+.empty-box { padding: var(--space-4) var(--space-3); border: 1.5px dashed var(--muted); border-radius: var(--radius); text-align: center; }
+.order-done { padding: var(--space-4); background: var(--accent); border-radius: var(--radius); }
+.order-done h2 { margin-bottom: var(--space-1); }
+.select-inline { display: flex; align-items: center; gap: var(--space-1); }
+.select-inline label { margin: 0; white-space: nowrap; }
+.select-inline select { width: auto; }
+.btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .product-card img { transition: none; } }
+.form-status.is-error { border-left-color: #B3261E; color: #7A1A14; background: #FFF6F4; }
+.load-error { padding: var(--space-3); border: 1.5px solid #B3261E; border-radius: var(--radius); background: #FFF6F4; }
+.notice { padding: var(--space-2); margin-bottom: var(--space-2); border-left: 4px solid var(--text); background: var(--accent); font-weight: 500; }
